@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.DAO.PlayerDAO">
+
+	<select id="getPlayer" parameterType="int" resultType="com.example.Entity.Player">
+		select * from player_mes where ID = #{ID}
+	</select>
+	
+	<insert id="insertPlayer" useGeneratedKeys="true" keyProperty="ID" parameterType="Player">
+		insert into player_mes(ID,Name,Age,Gender,speed_average,Load)
+		values(#{ID},#{Name},#{Age},#{Gender},#{speed_average},#{Load})
+	</insert>
+	
+	<delete id="deletePlayer" parameterType="int">
+		delete from player_mes where ID = #{ID}
+	</delete>
+	
+</mapper>

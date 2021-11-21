@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.DAO.GameResultDAO">
+	<select id="getGameResult" parameterType="int" resultType="com.example.Entity.GameResult">
+		select *
+        from game_result e
+		where e.playerId = #{playerId}
+	</select>
+	<insert id="insertGameResult" useGeneratedKeys="true" keyProperty="id" parameterType="com.example.Entity.GameResult">
+		insert into game_result(id,playerId,gameMapName,dateOfGame,league,averageSpeed,gameDuration,gameCommentary)
+		values(#{id},#{playerId},#{gameMapName},#{dateOfGame},#{league},#{averageSpeed},#{gameDuration},#{gameCommentary})
+	</insert>
+	<delete id="deleteGameResult" parameterType="int">
+		delete from game_result where id = #{id}
+	</delete>
+</mapper>

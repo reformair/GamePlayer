@@ -10,7 +10,7 @@ import com.example.Entity.Game;
 @Repository
 @Mapper
 public interface GameDAO {
-	public Game findGame(int id);
+	 public Game findGame(int id);
 	 public List<Game> getGame(List<Integer> IDList);
 	 public int insertGame(Game player);
 	 public int deleteGame(int id);

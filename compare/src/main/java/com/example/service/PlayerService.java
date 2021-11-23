@@ -1,6 +1,9 @@
 package com.example.service;
 
 import java.util.List;
+
+import com.example.Entity.Formula;
+import com.example.Entity.Parameter;
 import com.example.Entity.Player;
 
 public interface PlayerService {

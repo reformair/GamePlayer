@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Repository;
 
@@ -37,7 +38,9 @@ public class CompareApplication {
 	private void initRedisTemplate() {
 		// TODO Auto-generated method stub
 		RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
+		GenericJackson2JsonRedisSerializer serializer = new GenericJackson2JsonRedisSerializer();
 		redisTemplate.setKeySerializer(stringSerializer);
+		redisTemplate.setValueSerializer(serializer);;
 		redisTemplate.setHashKeySerializer(stringSerializer);
 	}
 

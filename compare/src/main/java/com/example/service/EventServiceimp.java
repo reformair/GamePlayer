@@ -10,7 +10,6 @@ public class EventServiceimp implements EventService{
 	@Autowired
 	private RedisTemplate redisTemplate = null;
 	
-	
 	@Override
 	public Object IDfindEvent(String MapID, int distance) throws Exception {
 		// TODO Auto-generated method stub

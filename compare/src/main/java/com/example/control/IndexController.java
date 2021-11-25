@@ -21,6 +21,7 @@ import com.example.service.EventService;
 import com.example.service.FormulaService;
 import com.example.service.GameResultServiceimp;
 import com.example.service.GameService;
+import com.example.service.MapService;
 import com.example.service.ParameterService;
 import com.example.service.PlayerService;
 
@@ -36,6 +37,9 @@ public class IndexController {
 	@Autowired
 	private EventService eventService;
 	
+	@Autowired
+	private MapService mapService;
+	
 	@RequestMapping("/index")
 	public String index()
 	{
@@ -47,9 +51,17 @@ public class IndexController {
 			p.setKey("1");
 			p.setValue("test");
 			System.out.print(formulaService.IDfindFormula(1));
+			eventService.insertEvent("test", 100, p);
 			p1 = (Parameter)eventService.IDfindEvent("test", 100);
 			System.out.print(p1.getKey());
 			System.out.print(eventService.deleteEvent("test", 100));
+
+			mapService.insertMap("M001", "go-to");
+			mapService.insertMap("M002", "go-to-2");
+			System.out.print(mapService.IDfindMap("M001"));
+			System.out.print(mapService.findAllMap().get("M002"));
+			System.out.print(mapService.deleteMap("M001"));
+			System.out.print(mapService.deleteMap("M002"));
 		} catch(Exception e) {
 			logger.error(e.getMessage());
 		}
